@@ -1,0 +1,36 @@
+body {
+    line-height: 1.7;
+}
+
+.prettyprint {
+    line-height: 1.7;
+}
+
+#epiceditor-preview li {
+    margin: 0px;
+}
+
+.main-body-grid {
+    margin-top: 70px;
+    position: relative;
+}
+
+.main-body-grid > .grid-left {
+    position: fixed;
+    top: 70px;
+    bottom: 0;
+    padding-bottom: 50px;
+    overflow: auto;
+    width: 210px;
+    border-right: 1px solid #ccc;
+}
+
+.main-body-grid > .grid-right {
+    margin-left: 250px;
+    position: relative;
+    padding-bottom: 50px;
+}
+
+#docs-brand {
+    width: 245px;
+}

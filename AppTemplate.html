@@ -1,0 +1,82 @@
+<header
+  class="navbar navbar-fixed-top bs-docs-nav"
+  id="top"
+  role="banner"
+  style="background-color: rgb(241, 241, 241); border-bottom: 1px solid gray;">
+  <div class="container">
+    <div class="navbar-header">
+      <p id="docs-brand" class="navbar-brand"><a href="#">coDocs</a></p>
+    </div>
+    <nav role="navigation" class="navbar-default">
+      <p class="navbar-text">
+       {{ selectedDoc.filepath }}
+      </p>
+      <form
+        class="navbar-form navbar-right"
+        role="form"
+        name="forms.saveDocForm"
+        ng-submit="saveDoc()"
+        unsaved-warning-form>
+        <button
+          type="button"
+          class="btn btn-default"
+          ng-click="toggleEdit()">
+          Toggle Edit
+        </button>
+        <button type="button"
+          class="btn btn-default"
+          ng-click="goFullscreen()">
+          Fullscreen
+        </button>
+
+        <!-- if the change event triggered properly, ng-disabled="forms.saveDocForm.$pristine" -->
+        <button
+          type="submit"
+          class="btn btn-success">
+          Save
+        </button>
+      </form>
+    </nav>
+  </div>
+</header>
+
+<div class="row" style="margin-bottom:70px;"></div>
+<div class="main-body-grid">
+  <div class="grid-left">
+
+    <!-- All README.md files -->
+    <ul class="list-unstyled">
+      <li><p><strong>Readme files</strong></p></li>
+      <li>
+        <input
+            class="form-control"
+            style="width: 180px; margin-bottom: 10px'"
+            ng-model="searchText"
+            placeholder="Search">
+      </li>
+    </ul>
+
+    <ul class="list-unstyled">
+      <li ng-repeat="doc in docs | orderBy:'dirname' | filter: searchProps track by $index">
+        <a href ng-click="goToDoc()" title="{{ doc.filepath }}">{{ doc.dirname }}</a>
+      </li>
+    </ul>
+
+    <!-- Master Yoda -->
+    <ul class="list-unstyled">
+      <li>&nbsp;</li>
+      <li>
+        <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">
+          Markdown Cheat Sheet
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="grid-right">
+    <div class="row" id="epiceditor"></div>
+  </div>
+</div>
+
+<div class="row" ui-view></div>
+
+<toaster-container toaster-options="{'position-class': 'toast-bottom-right'}"></toaster-container>
