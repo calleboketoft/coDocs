@@ -6,7 +6,7 @@ Using with existing app
 
 ```javascript
 var coDocs = require('./coDocs/serverRoutes')({
-  app: app,
+  app: app, // express app
   docsRootDir: path.resolve(__dirname, ''),
   relevantFileName: 'README.md'
 })
